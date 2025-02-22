@@ -2,6 +2,7 @@ package spring.api.apistart.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import spring.api.apistart.dto.DonHangChiTietCustom;
 import spring.api.apistart.entity.DonHangChiTiet;
 import spring.api.apistart.repository.DonHangChiTietRepository;
 import spring.api.apistart.repository.DonHangRepository;
@@ -16,8 +17,8 @@ public class DonHangChiTietService {
     private DonHangChiTietRepository donHangChiTietRepository;
 
     // Lấy tất cả don hang chi tiet
-    public List<DonHangChiTiet> getAllDHCT() {
-        return donHangChiTietRepository.findAll();
+    public List<DonHangChiTietCustom> getAllDHCT() {
+        return donHangChiTietRepository.getAllDHCT();
     }
 
     // Lấy DHCT theo id

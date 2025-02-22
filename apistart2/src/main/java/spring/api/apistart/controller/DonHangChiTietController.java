@@ -3,6 +3,7 @@ package spring.api.apistart.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import spring.api.apistart.dto.DonHangChiTietCustom;
 import spring.api.apistart.entity.DonHangChiTiet;
 import spring.api.apistart.service.DonHangChiTietService;
 
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/don-hang-chi-tiet")
+@RequestMapping("api/donHangchitiet")
 @RequiredArgsConstructor
 public class DonHangChiTietController {
 
@@ -19,14 +20,8 @@ public class DonHangChiTietController {
 
     // Lấy tất cả don hang chi tiet
     @GetMapping
-    public List<DonHangChiTiet> getAllDH() {
+    public List<DonHangChiTietCustom> getAllDH() {
         return donHangChiTietService.getAllDHCT();
-    }
-
-    // Lấy DHCT theo ID
-    @GetMapping("/{id}")
-    public Optional<DonHangChiTiet> getMaGGById(@PathVariable Integer id) {
-        return donHangChiTietService.getDHCTById(id);
     }
 
     // Thêm DHCT mới

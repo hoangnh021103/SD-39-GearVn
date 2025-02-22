@@ -1,4 +1,5 @@
 package spring.api.apistart.controller;
+import spring.api.apistart.dto.MaGiamGiaCustom;
 import spring.api.apistart.entity.MaGiamGia;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/ma-giam-gia")
+@RequestMapping("api/maGiamgia")
 @RequiredArgsConstructor
 public class MaGiamGiaController {
 
@@ -18,7 +19,7 @@ public class MaGiamGiaController {
 
     // Lấy tất cả ma
     @GetMapping
-    public List<MaGiamGia> getAllMaGG() {
+    public List<MaGiamGiaCustom> getAllMaGG() {
         return maGiamGiaService.getAllMaGG();
     }
 

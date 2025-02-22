@@ -16,9 +16,9 @@ public class ChiTietSanPhamController {
         return ResponseEntity.ok(service.getAll());
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<?>add(@RequestBody ChiTietSanPham ctsp){
-    return ResponseEntity.ok(service.add(ctsp));
+   
+    @DeleteMapping("/delete/{id}")
+    public void deleteCTSP(@PathVariable Integer id) {
+        service.deleteCTSP(id);
     }
-
 }

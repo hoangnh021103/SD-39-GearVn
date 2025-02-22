@@ -1,5 +1,6 @@
 package spring.api.apistart.service;
 
+import spring.api.apistart.dto.MaGiamGiaCustom;
 import spring.api.apistart.entity.MaGiamGia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,8 @@ public class MaGiamGiaService {
     private MaGiamGiaRepository maGiamGiaRepository;
 
     // Lấy tất cả ma
-    public List<MaGiamGia> getAllMaGG() {
-        return maGiamGiaRepository.findAll();
+    public List<MaGiamGiaCustom> getAllMaGG() {
+        return maGiamGiaRepository.getAllMaGiamGia();
     }
 
     // Lấy ma theo id

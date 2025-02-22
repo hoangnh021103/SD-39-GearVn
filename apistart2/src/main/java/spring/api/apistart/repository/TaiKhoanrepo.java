@@ -9,8 +9,8 @@ import java.util.List;
 
 @Repository
 public interface TaiKhoanrepo extends JpaRepository<TaiKhoan, Integer> {
-    @Query(value = "SELECT tk.id AS tai_khoan_id, tk.email, tk.mat_khau_hash, tk.vai_tro, tk.trang_thai\n" +
-            "FROM tai_khoan tk",nativeQuery = true)
+    @Query(value = "SELECT id, email, mat_khau_hash, vai_tro, trang_thai\n" +
+            "FROM tai_khoan",nativeQuery = true)
     List<TaiKhoanCustom>getAllTaiKhoan();
 }
 

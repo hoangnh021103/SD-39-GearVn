@@ -3,6 +3,7 @@ package spring.api.apistart.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import spring.api.apistart.dto.DonHangCustom;
 import spring.api.apistart.entity.DonHang;
 import spring.api.apistart.service.DonHangService;
 
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/don-hang")
+@RequestMapping("api/donHang")
 @RequiredArgsConstructor
 public class DonHangController {
     @Autowired
@@ -18,14 +19,8 @@ public class DonHangController {
 
     // Lấy tất cả don hang
     @GetMapping
-    public List<DonHang> getAllDH() {
+    public List<DonHangCustom> getAllDH() {
         return donHangService.getAllDH();
-    }
-
-    // Lấy DH theo ID
-    @GetMapping("/{id}")
-    public Optional<DonHang> getMaGGById(@PathVariable Integer id) {
-        return donHangService.getDHById(id);
     }
 
     // Thêm DH mới

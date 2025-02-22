@@ -2,6 +2,7 @@ package spring.api.apistart.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import spring.api.apistart.dto.DonHangCustom;
 import spring.api.apistart.entity.DonHang;
 import spring.api.apistart.repository.DonHangRepository;
 
@@ -14,8 +15,8 @@ public class DonHangService {
     private DonHangRepository donHangRepository;
 
     // Lấy tất cả don hang
-    public List<DonHang> getAllDH() {
-        return donHangRepository.findAll();
+    public List<DonHangCustom> getAllDH() {
+        return donHangRepository.getAllDonHang();
     }
 
     // Lấy DH theo id
