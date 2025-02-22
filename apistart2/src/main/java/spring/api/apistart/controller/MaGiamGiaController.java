@@ -22,13 +22,6 @@ public class MaGiamGiaController {
     public List<MaGiamGiaCustom> getAllMaGG() {
         return maGiamGiaService.getAllMaGG();
     }
-
-    // Lấy khách hàng theo ID
-    @GetMapping("/{id}")
-    public Optional<MaGiamGia> getMaGGById(@PathVariable Integer id) {
-        return maGiamGiaService.getMaGGById(id);
-    }
-
     // Thêm ma mới
     @PostMapping
     public MaGiamGia createMaGG(@RequestBody MaGiamGia maGiamGia) {

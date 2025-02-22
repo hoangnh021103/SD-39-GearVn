@@ -19,11 +19,6 @@ public class MaGiamGiaService {
         return maGiamGiaRepository.getAllMaGiamGia();
     }
 
-    // Lấy ma theo id
-    public Optional<MaGiamGia> getMaGGById(Integer id) {
-        return maGiamGiaRepository.findById(id);
-    }
-
     // Thêm ma mới
     public MaGiamGia createMaGG(MaGiamGia maGiamGia) {
         return maGiamGiaRepository.save(maGiamGia);

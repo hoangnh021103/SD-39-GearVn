@@ -21,11 +21,6 @@ public class DonHangChiTietService {
         return donHangChiTietRepository.getAllDHCT();
     }
 
-    // Lấy DHCT theo id
-    public Optional<DonHangChiTiet> getDHCTById(Integer id) {
-        return donHangChiTietRepository.findById(id);
-    }
-
     // Thêm DHCT mới
     public DonHangChiTiet createDHCT(DonHangChiTiet donHangChiTiet) {
         return donHangChiTietRepository.save(donHangChiTiet);

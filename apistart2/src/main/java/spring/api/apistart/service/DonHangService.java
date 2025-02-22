@@ -19,11 +19,6 @@ public class DonHangService {
         return donHangRepository.getAllDonHang();
     }
 
-    // Lấy DH theo id
-    public Optional<DonHang> getDHById(Integer id) {
-        return donHangRepository.findById(id);
-    }
-
     // Thêm DH mới
     public DonHang createDH(DonHang donHang) {
         return donHangRepository.save(donHang);
