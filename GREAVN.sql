@@ -220,7 +220,7 @@ VALUES
 -- Bảng khach_hang
 INSERT INTO khach_hang (tai_khoan_id, ho_ten, so_dien_thoai, sdt_phu, tinh, huyen, xa, dia_chi, dia_chi_phu)
 VALUES
-(1, N'Nguyen Van A', '0123456789', NULL, N'Hanoi', N'Dong Da', N'Lang Ha', N'123 Nguyen Trai', NULL),
+(1, N'Nguyen Van A', '0123456789', '0911555666', N'Hanoi', N'Dong Da', N'Lang Ha', N'123 Nguyen Trai', '789 Ly Thuong Kiet'),
 (2, N'Tran Thi B', '0987654321', '0978123456', N'HCMC', N'Quan 1', N'Ben Nghe', N'456 Tran Hung Dao', N'Phu Nhuan');
 
 -- Bảng nhan_vien
@@ -388,3 +388,67 @@ SELECT * FROM chi_tiet_don_hang;
 
 -- Lấy tất cả giỏ hàng
 SELECT * FROM gio_hang;
+
+
+
+
+
+
+
+
+
+
+-- Lấy thông tin tài khoản
+SELECT tk.id AS tai_khoan_id, tk.email, tk.mat_khau_hash, tk.vai_tro, tk.trang_thai
+FROM tai_khoan tk;
+
+-- Lấy thông tin nhân viên kèm theo tài khoản
+SELECT nv.id AS nhan_vien_id, nv.ho_ten, nv.ngay_sinh, nv.gioi_tinh, nv.so_dien_thoai, nv.dia_chi, tk.id AS tai_khoan_id
+FROM nhan_vien nv
+JOIN tai_khoan tk ON nv.tai_khoan_id = tk.id;
+
+-- Lấy thông tin khách hàng kèm theo tài khoản
+SELECT kh.id AS khach_hang_id, kh.ho_ten, kh.so_dien_thoai, kh.sdt_phu, kh.tinh, kh.huyen, kh.xa, kh.dia_chi, kh.dia_chi_phu, tk.id AS tai_khoan_id
+FROM khach_hang kh
+JOIN tai_khoan tk ON kh.tai_khoan_id = tk.id;
+
+-- Lấy thông tin mã giảm giá
+SELECT id AS ma_giam_gia_id, loai_giam_gia, gia_tri_giam, don_hang_toi_thieu, giam_gia_toi_da, gioi_han_su_dung, ngay_bat_dau, ngay_ket_thuc
+FROM ma_giam_gia;
+
+-- Lấy thông tin đơn hàng kèm theo thông tin khách hàng, nhân viên và mã giảm giá
+SELECT dh.id AS don_hang_id, dh.dia_chi_giao_hang, dh.trang_thai, dh.ngay_tao, dh.ngay_cap_nhat,
+       kh.id AS khach_hang_id, nv.id AS nhan_vien_id, mg.id AS ma_giam_gia_id
+FROM don_hang dh
+LEFT JOIN khach_hang kh ON dh.khach_hang_id = kh.id
+LEFT JOIN nhan_vien nv ON dh.nhan_vien_id = nv.id
+LEFT JOIN ma_giam_gia mg ON dh.ma_giam_gia_id = mg.id;
+
+-- Lấy thông tin chi tiết đơn hàng kèm theo thông tin sản phẩm
+SELECT dhct.id AS chi_tiet_don_hang_id, dhct.so_luong, dhct.gia, dhct.thue, dhct.thanh_tien,
+       dh.id AS don_hang_id, sp.id AS san_pham_id
+FROM chi_tiet_don_hang dhct
+LEFT JOIN don_hang dh ON dhct.don_hang_id = dh.id
+LEFT JOIN san_pham sp ON dhct.san_pham_id = sp.id;
+
+-- Lấy thông tin sản phẩm kèm theo danh mục, màu sắc, hình ảnh, thương hiệu
+SELECT sp.id AS san_pham_id, sp.ten, sp.hinh_dai_dien, sp.bao_hanh, sp.gia_nhap, sp.gia_ban, sp.thue, sp.mo_ta,
+       dm.id AS danh_muc_id, dm.ten AS danh_muc_ten,
+       ms.id AS mau_sac_id, ms.mau_json,
+       ha.id AS hinh_anh_id, ha.hinh_json,
+       th.id AS thuong_hieu_id, th.thuong_hieu_json,
+       dm_cha.id AS danh_muc_cha_id, dm_cha.ten AS danh_muc_cha_ten
+FROM san_pham sp
+LEFT JOIN danh_muc dm ON sp.danh_muc_id = dm.id
+LEFT JOIN danh_muc_cha dm_cha ON dm.danh_muc_cha_id = dm_cha.id
+LEFT JOIN mau_sac ms ON sp.mau_sac_id = ms.id
+LEFT JOIN hinh_anh ha ON sp.hinh_anh_id = ha.id
+LEFT JOIN thuong_hieu th ON sp.thuong_hieu_id = th.id;
+
+-- Lấy thông tin chi tiết sản phẩm kèm theo thông tin sản phẩm
+SELECT ctsp.id AS chi_tiet_san_pham_id, ctsp.serial, ctsp.vi_xu_ly, ctsp.ram, ctsp.luu_tru, ctsp.card_do_hoa, 
+       ctsp.man_hinh, ctsp.do_phan_giai, ctsp.pin, ctsp.trong_luong, ctsp.he_dieu_hanh, ctsp.bao_hanh,
+       sp.id AS san_pham_id, sp.ten AS san_pham_ten
+FROM chi_tiet_san_pham ctsp
+LEFT JOIN san_pham sp ON ctsp.san_pham_id = sp.id;
+
