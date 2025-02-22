@@ -23,14 +23,6 @@ public class DonHang {
     @JoinColumn(name = "nhan_vien_id")
     private NhanVien nhanVien;
 
-//    @ManyToOne
-//    @JoinColumn(name = "phuong_thuc_tt_id")
-//    private PhuongThucThanhToan phuongThucThanhToan;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "don_vi_vc_id")
-//    private DonViVanChuyen donViVanChuyen;
-
     @ManyToOne
     @JoinColumn(name = "ma_giam_gia_id")
     private MaGiamGia maGiamGia;

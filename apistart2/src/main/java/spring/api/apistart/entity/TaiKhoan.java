@@ -26,9 +26,6 @@ public class TaiKhoan {
     @Column(name = "vai_tro", nullable = false, length = 40)
     private String vaiTro;
 
-    @Column(name = "token_lam_moi", length = 255)
-    private String tokenLamMoi;
-
     @Column(name = "trang_thai", nullable = false)
     private Boolean trangThai = true;
 }
