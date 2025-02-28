@@ -34,7 +34,7 @@ public class ChiTietSanPham {
     private String ram;
 
     @Column(name = "luu_tru", nullable = false, length = 100)
-    private String luuTru;
+    private String luu_tru;
 
     @Column(name = "card_do_hoa", length = 255)
     private String cardDoHoa;
@@ -48,7 +48,7 @@ public class ChiTietSanPham {
     @Column(name = "pin", length = 100)
     private String pin;
 
-    @Column(name = "trong_luong", precision = 5, scale = 2)
+    @Column(name = "trong_luong") // Bỏ precision và scale
     private Double trongLuong;
 
     @Column(name = "he_dieu_hanh", length = 100)
