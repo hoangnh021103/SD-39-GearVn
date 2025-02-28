@@ -1,11 +1,7 @@
 package spring.api.apistart.entity;
 
-
-
 import jakarta.persistence.*;
 import lombok.*;
-
-
 
 @Entity
 @Table(name = "chi_tiet_san_pham")
@@ -34,7 +30,7 @@ public class ChiTietSanPham {
     private String ram;
 
     @Column(name = "luu_tru", nullable = false, length = 100)
-    private String luu_tru;
+    private String luuTru;
 
     @Column(name = "card_do_hoa", length = 255)
     private String cardDoHoa;
@@ -48,7 +44,7 @@ public class ChiTietSanPham {
     @Column(name = "pin", length = 100)
     private String pin;
 
-    @Column(name = "trong_luong") // Bỏ precision và scale
+    @Column(name = "trong_luong")
     private Double trongLuong;
 
     @Column(name = "he_dieu_hanh", length = 100)
