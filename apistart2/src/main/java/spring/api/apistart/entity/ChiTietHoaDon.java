@@ -28,12 +28,12 @@ public class ChiTietHoaDon {
     @Column(name = "so_luong", nullable = false)
     private Integer soLuong;
 
-    @Column(name = "gia_ban", nullable = false, precision = 10, scale = 2)
+    @Column(name = "gia_ban", nullable = false, precision = 10)
     private Double giaBan;
 
-    @Column(name = "thue", nullable = false, precision = 10, scale = 2)
+    @Column(name = "thue", nullable = false, precision = 10)
     private Double thue;
 
-    @Column(name = "thanh_tien", nullable = false, precision = 10, scale = 2)
+    @Column(name = "thanh_tien", nullable = false, precision = 10)
     private Double thanhTien;
 }

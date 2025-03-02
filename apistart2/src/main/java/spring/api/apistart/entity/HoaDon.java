@@ -35,7 +35,7 @@ public class HoaDon {
     @Column(name = "dia_chi_giao_hang", length = 255)
     private String diaChiGiaoHang;
 
-    @Column(name = "tong_tien", nullable = false, precision = 10, scale = 2)
+    @Column(name = "tong_tien", nullable = false, precision = 10)
     private Double tongTien;
 
     @Column(name = "trang_thai", nullable = false)

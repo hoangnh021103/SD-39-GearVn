@@ -53,7 +53,7 @@ public class ChiTietSanPham {
     @Column(name = "pin", length = 100)
     private String pin;
 
-    @Column(name = "trong_luong", precision = 5, scale = 2)
+    @Column(name = "trong_luong", precision = 5)
     private Double trongLuong;
 
     @Column(name = "he_dieu_hanh", length = 100)

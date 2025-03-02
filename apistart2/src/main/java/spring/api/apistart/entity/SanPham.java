@@ -27,13 +27,13 @@ public class SanPham {
     @Column(name = "bao_hanh", length = 50)
     private String baoHanh;
 
-    @Column(name = "gia_nhap", nullable = false, precision = 10, scale = 2)
+    @Column(name = "gia_nhap", nullable = false, precision = 10)
     private Double giaNhap;
 
-    @Column(name = "gia_ban", nullable = false, precision = 10, scale = 2)
+    @Column(name = "gia_ban", nullable = false, precision = 10)
     private Double giaBan;
 
-    @Column(name = "thue", nullable = false, precision = 10, scale = 2)
+    @Column(name = "thue", nullable = false, precision = 10)
     private Double thue;
 
     @Column(name = "mo_ta", length = 255)
