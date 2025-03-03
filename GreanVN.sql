@@ -1,4 +1,4 @@
-﻿create database Gearvn1
+create database Gearvn1
 use Gearvn1
 
 -- Tạo bảng tai_khoan
@@ -163,7 +163,6 @@ CREATE TABLE hoa_don
     ghi_chu            NVARCHAR(255),
     ngay_tao           DATETIME2 NOT NULL,
     ngay_cap_nhat      DATETIME2 NOT NULL,
-    ma_don_hang        NVARCHAR(20) UNIQUE
 );
 GO
 
@@ -175,7 +174,6 @@ CREATE TABLE chi_tiet_hoa_don
     san_pham_id     INT FOREIGN KEY REFERENCES san_pham (id),
     so_luong        INT NOT NULL,
     gia_ban         DECIMAL(10,2) NOT NULL,
-    thue            DECIMAL(10,2) NOT NULL,
     thanh_tien      DECIMAL(10,2) NOT NULL
 );
 GO
@@ -303,23 +301,23 @@ VALUES
 GO
 
 -- Thêm dữ liệu vào bảng hoa_don (có ma_don_hang)
-INSERT INTO hoa_don (khach_hang_id, nhan_vien_id, phuong_thuc_tt_id, don_vi_vc_id, dia_chi_giao_hang, tong_tien, trang_thai, ghi_chu, ngay_tao, ngay_cap_nhat, ma_don_hang)
+INSERT INTO hoa_don (khach_hang_id, nhan_vien_id, phuong_thuc_tt_id, don_vi_vc_id, dia_chi_giao_hang, tong_tien, trang_thai, ghi_chu, ngay_tao, ngay_cap_nhat)
 VALUES 
-(1, 1, 1, 1, N'123 Đường Láng, Hà Nội', 25000.00, 0, N'Giao laptop trong ngày', '2025-03-01 12:00:00', '2025-03-01 12:00:00', N'DH-20250301-001'),
-(2, 2, 2, 2, N'456 Lê Lợi, TP.HCM', 27000.00, 0, N'Gói cẩn thận', '2025-03-01 13:00:00', '2025-03-01 13:00:00', N'DH-20250301-002'),
-(3, 3, 3, 3, N'789 Nguyễn Văn Linh, Đà Nẵng', 30000.00, 0, N'Giao nhanh', '2025-03-01 14:00:00', '2025-03-01 14:00:00', N'DH-20250301-003'),
-(NULL, 1, 2, 1, N'111 Nguyễn Trãi, Hà Nội', 25000.00, 0, N'Giao trong ngày', '2025-03-01 15:00:00', '2025-03-01 15:00:00', N'DH-20250301-004'),
-(NULL, 2, 1, 2, N'222 Trần Phú, TP.HCM', 27000.00, 0, N'Gói cẩn thận', '2025-03-01 16:00:00', '2025-03-01 16:00:00', N'DH-20250301-005');
+(1, 1, 1, 1, N'123 Đường Láng, Hà Nội', 25000.00, 0, N'Giao laptop trong ngày', '2025-03-01 12:00:00', '2025-03-01 12:00:00'),
+(2, 2, 2, 2, N'456 Lê Lợi, TP.HCM', 27000.00, 0, N'Gói cẩn thận', '2025-03-01 13:00:00', '2025-03-01 13:00:00'),
+(3, 3, 3, 3, N'789 Nguyễn Văn Linh, Đà Nẵng', 30000.00, 0, N'Giao nhanh', '2025-03-01 14:00:00', '2025-03-01 14:00:00'),
+(NULL, 1, 2, 1, N'111 Nguyễn Trãi, Hà Nội', 25000.00, 0, N'Giao trong ngày', '2025-03-01 15:00:00', '2025-03-01 15:00:00'),
+(NULL, 2, 1, 2, N'222 Trần Phú, TP.HCM', 27000.00, 0, N'Gói cẩn thận', '2025-03-01 16:00:00', '2025-03-01 16:00:00');
 GO
 
 -- Thêm dữ liệu vào bảng chi_tiet_hoa_don
-INSERT INTO chi_tiet_hoa_don (hoa_don_id, san_pham_id, so_luong, gia_ban, thue, thanh_tien)
+INSERT INTO chi_tiet_hoa_don (hoa_don_id, san_pham_id, so_luong, gia_ban, thanh_tien)
 VALUES 
-(1, 1, 1, 25000.00, 10.00, 27500.00),
-(2, 2, 1, 27000.00, 10.00, 29700.00),
-(3, 3, 1, 30000.00, 10.00, 33000.00),
-(4, 1, 1, 25000.00, 10.00, 27500.00),
-(5, 2, 1, 27000.00, 10.00, 29700.00);
+(1, 1, 1, 25000.00, 27500.00),
+(2, 2, 1, 27000.00, 29700.00),
+(3, 3, 1, 30000.00, 33000.00),
+(4, 1, 1, 25000.00, 27500.00),
+(5, 2, 1, 27000.00, 29700.00);
 GO
 
 -- Thêm dữ liệu vào bảng gio_hang
