@@ -1,11 +1,13 @@
 package spring.api.apistart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import spring.api.apistart.entity.ChiTietHoaDon;
 import spring.api.apistart.service.ChiTietHoaDonService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/chi-tiet-hoa-don")
@@ -14,8 +16,22 @@ public class ChiTietHoaDonController {
     private ChiTietHoaDonService chiTietHoaDonService;
 
     @GetMapping
-    public List<ChiTietHoaDon> getAll() {
-        return chiTietHoaDonService.getAll();
+    public Page<ChiTietHoaDon> getAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        return chiTietHoaDonService.getAll(pageable);
+    }
+
+    @GetMapping("/search")
+    public Page<ChiTietHoaDon> search(
+            @RequestParam String keyword,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        return chiTietHoaDonService.search(keyword, pageable);
     }
 
     @GetMapping("/{id}")

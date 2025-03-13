@@ -1,6 +1,8 @@
 package spring.api.apistart.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import spring.api.apistart.entity.SanPham;
 import spring.api.apistart.repository.SanPhamRepository;
@@ -12,8 +14,19 @@ public class SanPhamService {
     @Autowired
     private SanPhamRepository sanPhamRepository;
 
+    // Lấy tất cả không phân trang
     public List<SanPham> getAll() {
         return sanPhamRepository.findAll();
+    }
+
+    // Lấy tất cả có phân trang
+    public Page<SanPham> getAll(Pageable pageable) {
+        return sanPhamRepository.findAll(pageable);
+    }
+
+    // Tìm kiếm theo tên hoặc thương hiệu, có phân trang
+    public Page<SanPham> search(String keyword, Pageable pageable) {
+        return sanPhamRepository.findByTenContainingOrThuongHieu_TenContaining(keyword, keyword, pageable);
     }
 
     public SanPham getById(Integer id) {

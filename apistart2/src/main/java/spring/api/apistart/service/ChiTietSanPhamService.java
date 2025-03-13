@@ -1,6 +1,8 @@
 package spring.api.apistart.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import spring.api.apistart.entity.ChiTietSanPham;
 import spring.api.apistart.repository.ChiTietSanPhamRepository;
@@ -14,6 +16,14 @@ public class ChiTietSanPhamService {
 
     public List<ChiTietSanPham> getAll() {
         return chiTietSanPhamRepository.findAll();
+    }
+
+    public Page<ChiTietSanPham> getAll(Pageable pageable) {
+        return chiTietSanPhamRepository.findAll(pageable);
+    }
+
+    public Page<ChiTietSanPham> search(String keyword, Pageable pageable) {
+        return chiTietSanPhamRepository.findBySanPham_TenContainingOrMauSac_TenMauContaining(keyword, keyword, pageable);
     }
 
     public ChiTietSanPham getById(Integer id) {
