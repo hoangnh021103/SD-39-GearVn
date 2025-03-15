@@ -12,8 +12,15 @@ public class ThuongHieuService {
     @Autowired
     private ThuongHieuRepository thuongHieuRepository;
 
-    public List<ThuongHieu> getAll() {
-        return thuongHieuRepository.findAll();
+    public List<ThuongHieu> getAll(int page, int size) {
+        List<ThuongHieu> all = thuongHieuRepository.findAll();
+        int totalItems = all.size();
+        int start = page * size;
+        int end = Math.min(start + size, totalItems);
+        if (start >= totalItems) {
+            return List.of();
+        }
+        return all.subList(start, end);
     }
 
     public ThuongHieu getById(Integer id) {
@@ -28,7 +35,6 @@ public class ThuongHieuService {
         return thuongHieuRepository.findById(id)
                 .map(existing -> {
                     existing.setTen(thuongHieu.getTen());
-                    existing.setMoTa(thuongHieu.getMoTa());
                     existing.setTrangThai(thuongHieu.getTrangThai());
                     return thuongHieuRepository.save(existing);
                 })

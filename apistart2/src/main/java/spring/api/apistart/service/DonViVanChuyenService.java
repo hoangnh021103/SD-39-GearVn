@@ -12,8 +12,15 @@ public class DonViVanChuyenService {
     @Autowired
     private DonViVanChuyenRepository donViVanChuyenRepository;
 
-    public List<DonViVanChuyen> getAll() {
-        return donViVanChuyenRepository.findAll();
+    public List<DonViVanChuyen> getAll(int page, int size) {
+        List<DonViVanChuyen> all = donViVanChuyenRepository.findAll();
+        int totalItems = all.size();
+        int start = page * size;
+        int end = Math.min(start + size, totalItems);
+        if (start >= totalItems) {
+            return List.of();
+        }
+        return all.subList(start, end);
     }
 
     public DonViVanChuyen getById(Integer id) {
@@ -28,8 +35,6 @@ public class DonViVanChuyenService {
         return donViVanChuyenRepository.findById(id)
                 .map(existing -> {
                     existing.setTen(donViVanChuyen.getTen());
-                    existing.setSoDienThoai(donViVanChuyen.getSoDienThoai());
-                    existing.setEmail(donViVanChuyen.getEmail());
                     existing.setTrangThai(donViVanChuyen.getTrangThai());
                     return donViVanChuyenRepository.save(existing);
                 })

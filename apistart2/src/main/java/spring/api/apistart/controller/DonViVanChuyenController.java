@@ -14,8 +14,10 @@ public class DonViVanChuyenController {
     private DonViVanChuyenService donViVanChuyenService;
 
     @GetMapping
-    public List<DonViVanChuyen> getAll() {
-        return donViVanChuyenService.getAll();
+    public List<DonViVanChuyen> getAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return donViVanChuyenService.getAll(page, size);
     }
 
     @GetMapping("/{id}")

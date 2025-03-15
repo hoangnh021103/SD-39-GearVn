@@ -14,8 +14,10 @@ public class ThuongHieuController {
     private ThuongHieuService thuongHieuService;
 
     @GetMapping
-    public List<ThuongHieu> getAll() {
-        return thuongHieuService.getAll();
+    public List<ThuongHieu> getAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return thuongHieuService.getAll(page, size);
     }
 
     @GetMapping("/{id}")
