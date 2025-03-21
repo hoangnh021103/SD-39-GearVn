@@ -198,19 +198,6 @@ CREATE TABLE gio_hang_spct
 );
 GO
 
--- Tạo bảng don_hang_khach_vang_lai
-CREATE TABLE don_hang_khach_vang_lai (
-    id INT PRIMARY KEY IDENTITY,
-    hoa_don_id INT FOREIGN KEY REFERENCES hoa_don(id),
-    ho NVARCHAR(50),
-    ten NVARCHAR(50),
-    email NVARCHAR(100),
-    sdt NVARCHAR(15),
-    tinh NVARCHAR(100) NOT NULL,
-    huyen NVARCHAR(100) NOT NULL,
-    xa NVARCHAR(100) NOT NULL,
-    dia_chi_chinh NVARCHAR(255) NOT NULL
-);
 
 -- Thêm dữ liệu vào bảng tai_khoan
 INSERT INTO tai_khoan (vai_tro, mo_ta, trang_thai, nguoi_tao, ngay_tao, nguoi_sua, ngay_sua)
@@ -336,15 +323,6 @@ VALUES
 (3, 3, 1, 0);
 GO
 
--- Thêm dữ liệu vào bảng don_hang_khach_vang_lai
-INSERT INTO don_hang_khach_vang_lai(
-    hoa_don_id, ho, ten, email, sdt, tinh, huyen, xa, dia_chi_chinh
-) VALUES 
-    (4, N'Pham', N'Van', N'van.pham@example.com', N'0909123456', 
-     N'Hà Nội', N'Thanh Xuân', N'Nhân Chính', N'111 Nguyễn Trãi'),
-    (5, N'Hoang', N'Thuy', N'thuy.hoang@example.com', N'0918765432', 
-     N'TP.HCM', N'Quận 7', N'Tân Phong', N'222 Trần Phú');
-
 -- Xem lại dữ liệu
 SELECT * FROM tai_khoan;
 SELECT * FROM khach_hang;
@@ -361,5 +339,5 @@ SELECT * FROM hoa_don;
 SELECT * FROM chi_tiet_hoa_don;
 SELECT * FROM gio_hang;
 SELECT * FROM gio_hang_spct;
-SELECT * FROM don_hang_khach_vang_lai;
+
 GO
